@@ -2,16 +2,16 @@ require 'pp'
 def nyc_pigeon_organizer(data)
 pigeon = {}
 
-data.each do |color_gender_lives, hash|
-  hash.each do |attribute, name|
+data.each do |traits, attribute|
+  attribute.each do |attribute, name|
     name.each do |name|
       if pigeon[name] ==nil
       pigeon[name] = {:color => [], :gender => [], :lives => []}
       end
-      if pigeon[name][color_gender_lives] == nil
-      pigeon[name][color_gender_lives] =[]
+      if pigeon[name][traits] == nil
+      pigeon[name][traits] =[]
       else
-      pigeon[name][color_gender_lives].push(attribute.to_s)
+      pigeon[name][traits].push(attribute.to_s)
       end
     end
   end
