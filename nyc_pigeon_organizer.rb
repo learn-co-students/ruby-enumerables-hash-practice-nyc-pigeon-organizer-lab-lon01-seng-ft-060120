@@ -1,24 +1,5 @@
 require 'pp'
-def nyc_pigeon_organizer(data)
-pigeon = {}
-
-data.each do |traits, attribute|
-  attribute.each do |attribute, name|
-    name.each do |name|
-      if pigeon[name] ==nil
-      pigeon[name] = {:color => [], :gender => [], :lives => []}
-      end
-      if pigeon[name][traits] == nil
-      pigeon[name][traits] =[]
-      else
-      pigeon[name][traits].push(attribute.to_s)
-      end
-    end
-  end
-end
-pp pigeon
-
-end
+require 'pry'
 
 
 pigeon_data = {
@@ -40,4 +21,24 @@ pigeon_data = {
         }
 }
 
-  
+
+def nyc_pigeon_organizer(pigeon_data)
+pigeons ={}
+pigeon_names=[]
+pigeon_data[:color].each {|k, v| pigeon_names.push(v)}
+pigeon_names.flatten!
+pigeon_names.uniq!
+pigeon_names.each{|name| pigeons[name]={:color =>[], :gender =>[], :lives =>[]}}
+pigeon_data.each {|trait, attribute|  trait; attribute
+  attribute.each {|top, name|   top; name;
+    name.each{|value| 
+    if pigeons[value]
+      pigeons[value][trait].push(top.to_s)
+    end
+    }
+  }
+}
+
+pp pigeons
+end
+
